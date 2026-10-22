@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Opportunity Cost of Not Investing</title>
+<meta name="description" content="Saving and investment patterns in the top 50 economies (2025): how middle-income households under 35 save, and what keeping surplus cash out of the market costs them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe3;
+    --paper-raised: #fbf7ef;
+    --ink: #221d17;
+    --ink-soft: #5b5248;
+    --ink-faint: #8a8074;
+    --rule: #d9cfbe;
+    --accent: #8c2f1f;
+    --accent-soft: #e9d6c9;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1b1814;
+      --paper-raised: #23201b;
+      --ink: #ece4d6;
+      --ink-soft: #b8ad9d;
+      --ink-faint: #877d70;
+      --rule: #3a342c;
+      --accent: #e08a6f;
+      --accent-soft: #3a2721;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1b1814;
+    --paper-raised: #23201b;
+    --ink: #ece4d6;
+    --ink-soft: #b8ad9d;
+    --ink-faint: #877d70;
+    --rule: #3a342c;
+    --accent: #e08a6f;
+    --accent-soft: #3a2721;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 0 16px; }
+
+  .masthead { border-bottom: 1px solid var(--rule); }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
+  .masthead a { font-family: var(--mono); font-size: 13px; text-decoration: none; color: var(--ink-soft); }
+  .masthead a:hover { color: var(--accent); }
+
+  .title-block { padding: 56px 0 32px; }
+  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
+  h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.08; font-weight: 500; margin: 0 0 16px; }
+  .dek { font-size: 21px; font-style: italic; color: var(--ink-soft); margin: 0 0 20px; }
+  .meta { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin: 0; }
+
+  .note {
+    background: var(--paper-raised); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+    border-radius: 4px; padding: 16px 18px; margin: 0 0 40px; font-size: 16px; color: var(--ink-soft); line-height: 1.55;
+  }
+  .note strong { color: var(--ink); font-weight: 500; }
+
+  .toc { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; margin: 0 0 48px; }
+  .toc p { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; font-size: 16px; }
+  .toc a { color: var(--ink-soft); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+
+  article h2 { font-size: 30px; font-weight: 500; line-height: 1.2; margin: 56px 0 16px; scroll-margin-top: 16px; }
+  article h3 { font-size: 23px; font-weight: 500; margin: 36px 0 10px; }
+  article p { margin: 0 0 1em; }
+  article ul { padding-left: 22px; margin: 0 0 1.2em; }
+  article li { margin-bottom: .55em; }
+  article li strong, article p strong { font-weight: 600; }
+
+  .findings { list-style: none; padding: 0; counter-reset: f; }
+  .findings li { counter-increment: f; position: relative; padding-left: 44px; margin-bottom: 1em; }
+  .findings li::before {
+    content: counter(f, decimal-leading-zero); position: absolute; left: 0; top: 3px;
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+  }
+
+  .formula {
+    font-family: var(--mono); font-size: 15px; background: var(--paper-raised); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 16px 18px; margin: 0 0 1.4em; line-height: 1.6; overflow-x: auto;
+  }
+
+  .case { border-top: 1px dashed var(--rule); padding-top: 4px; }
+  .case dl { display: grid; grid-template-columns: 130px 1fr; gap: 6px 18px; margin: 0 0 1em; }
+  .case dt { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); padding-top: 5px; }
+  .case dd { margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 .6em; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-raised); }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 560px; }
+  th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); }
+  td { font-family: var(--mono); }
+  tr:last-child td { border-bottom: none; }
+  .caption { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin: 0 0 1.4em; }
+
+  .end { border-top: 1px solid var(--rule); margin-top: 56px; padding-top: 28px; }
+  .end .back { font-family: var(--mono); font-size: 13px; text-decoration: none; }
+
+  footer { border-top: 1px solid var(--rule); margin-top: 56px; padding: 28px 0 56px; }
+  footer p { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin: 0 0 8px; line-height: 1.6; }
+
+  @media (max-width: 720px) {
+    body { font-size: 18px; }
+    .title-block { padding: 40px 0 24px; }
+    .toc ol { columns: 1; }
+    .case dl { grid-template-columns: 1fr; gap: 2px; }
+    .case dd { margin-bottom: 10px; }
+    article h2 { font-size: 26px; margin-top: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="/valueinvesting">← The arts of value investing</a>
+    <a href="/valueinvesting#research">Research</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="title-block">
+    <p class="kicker">Research · 2025</p>
+    <h1>Saving and Investment Patterns in the Top 50 Economies</h1>
+    <p class="dek">How middle-income households under 35 save, and what keeping surplus cash out of the market costs them.</p>
+    <p class="meta">AI-assisted report · ~15 min read</p>
+  </div>
+
+  <div class="note">
+    <strong>About this report.</strong> I created it with AI as a research assistant. It draws on IMF, World Bank and OECD data, but the per-household and market-size figures are order-of-magnitude estimates built on stated assumptions, not audited results. Read them as illustrations of scale, not forecasts.
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#summary">Executive summary</a></li>
+      <li><a href="#method">Methodology</a></li>
+      <li><a href="#macro">Macro trends</a></li>
+      <li><a href="#households">Household patterns</a></li>
+      <li><a href="#surplus">Eligible surplus</a></li>
+      <li><a href="#allocation">Asset allocation</a></li>
+      <li><a href="#scenarios">Wealth scenarios</a></li>
+      <li><a href="#cost">Opportunity cost</a></li>
+      <li><a href="#drivers">Drivers of saving</a></li>
+      <li><a href="#cases">Case studies</a></li>
+      <li><a href="#sizing">Market sizing</a></li>
+      <li><a href="#conclusions">Conclusions</a></li>
+    </ol>
+  </nav>
+
+  <article>
+    <h2 id="summary">Executive summary</h2>
+    <p>This report examines saving and investment behaviour across the world's 50 largest economies, ranked by IMF 2025 nominal GDP, with a focus on middle-income households under 35. It combines a macroeconomic panel (2000–2025) covering GDP, gross domestic saving and investment as a share of GDP, inflation, interest rates and household saving rates, with a household panel (2011–2024) of financial indicators such as account ownership, deposits, pensions and equity holdings, drawn from the World Bank Global Findex and OECD data.</p>
+    <p>For each household segment, we define an "eligible surplus": liquid assets beyond a three-month emergency reserve. We then estimate how much wealth is forgone when that surplus sits in low-yield deposits rather than a conservative portfolio, examine what drives saving behaviour, and work through five case studies (the US, China, Japan, Germany and Singapore) before sizing the market for investment products aimed at young savers.</p>
+    <p><strong>Key findings:</strong></p>
+    <ol class="findings">
+      <li><strong>Emerging economies save far more.</strong> Many emerging economies save over 30–40% of GDP, compared with roughly 15–25% in most advanced economies. China's gross saving has averaged about 37% of GDP, against roughly 20% in the US. Domestic investment often lags, leaving a large pool of uninvested savings.</li>
+      <li><strong>Young savers have limited, but real, capacity.</strong> Young, middle-income households in many countries save relatively little because of low incomes, high consumption or limited financial knowledge, yet a meaningful minority has unused saving capacity. Account ownership among this cohort is often below 50% in emerging markets, versus over 70% in advanced economies.</li>
+      <li><strong>The surplus is large in aggregate.</strong> Eligible surplus per household is in the order of several thousand US dollars in advanced economies and several hundred in emerging markets, adding up to trillions globally. Holding it in deposits rather than a conservative diversified portfolio can cost an average under-35 household in China or Mexico roughly $100–300 a year in forgone returns.</li>
+      <li><strong>Saving is driven by insecurity as much as income.</strong> The strongest drivers appear to be income and demographics, weak social safety nets (precautionary saving), low pension coverage and behavioural factors such as limited financial literacy. Institutional design, such as Singapore's mandatory CPF scheme, also shapes the pattern.</li>
+      <li><strong>Each market has its own story.</strong> US millennials invest through 401(k)s and IRAs; Chinese youth keep savings in bank deposits because stock and pension markets are less developed; Japanese savings are high but skewed towards older cohorts; young Germans are conservative savers; and young Singaporeans benefit from CPF but have limited alternatives.</li>
+      <li><strong>There is a clear product gap.</strong> Priority segments include the urban middle class aged 25–35, with gaps in digital wealth management, hybrid pension-investment plans and financial education. For example, if half of China's roughly 400 million urban middle-class 20–35-year-olds each had $1,000 of investable surplus and paid a 1% advisory fee, the revenue pool would be about $2 billion a year.</li>
+    </ol>
+    <p>The analysis shows a vast pool of under-invested savings and suggests that well-designed financial services could unlock value for both households and markets.</p>
+
+    <h2 id="method">Methodology</h2>
+    <p>The 50 economies are defined by the IMF World Economic Outlook 2025 nominal GDP rankings (for example, US $30.9T, China $19.6T, Germany $5.12T). The macro panel covers each country's annual GDP, gross domestic saving and gross capital formation as a share of GDP, CPI inflation and real interest rates, sourced from the IMF WEO and World Bank World Development Indicators, with OECD household saving rates where available.</p>
+    <p>The household panel is organised by country, survey year and demographic segment. Primary sources are the World Bank Global Findex (2011–2024) and OECD household accounts, supplemented by national surveys. Key variables are account ownership, deposit ownership and balances, pension coverage, equity ownership and median financial wealth, stratified by age (notably 15–24 and 25–34) and income. Where microdata are missing, values are interpolated or proxied from national accounts.</p>
+    <p>The middle-income under-35 cohort is identified using survey income distributions (for example, the 60th–80th income percentiles) combined with population data. Where microdata are absent, we assume around 60% of 20–34-year-olds fall into the middle-income band, based on comparable economies.</p>
+    <p>For wealth scenarios, we simulate 10-, 20- and 30-year paths for representative households, including inflation, taxes and fees of about 0.5–1% a year, with a downside case at the 20th percentile of equity returns. Opportunity cost compares a deposit-only baseline with a balanced portfolio, using capital-market assumptions of a 4–6% equity premium and 2–3% real bond yields, taxes of 15–20% on gains, and a ±20% stress test on returns.</p>
+    <p>To explore what drives saving, we relate saving rates to income growth, income uncertainty, financial development, pension coverage, dependency ratios and education levels. Assumptions and data gaps are documented throughout.</p>
+
+    <h2 id="macro">Macro trends in saving and investment</h2>
+    <p>Gross saving rates vary widely across the top economies. Advanced economies such as the US and UK typically save around 15–25% of GDP, while many emerging markets, including China, India and the Gulf states, save 30–50%. In 2024, IMF data put China's national saving at about 45% of GDP, India's at about 30% and the US at about 18%. These figures include household, corporate and government saving; the World Bank defines gross saving simply as GDP minus final consumption.</p>
+    <p>Investment rates are often lower than, or only slightly below, saving rates, especially in Asia, which produces large current-account surpluses. Many countries therefore accumulate foreign assets instead of investing at home.</p>
+    <ul>
+      <li><strong>Saving by country.</strong> In 2024, gross saving was about 45% of GDP in China, 30% in India and 35% in Korea, compared with about 18% in the US and around 20% in much of the euro area. Italy and the UK save about 18%, while oil exporters such as Saudi Arabia and the UAE swing between 30% and 40% with the oil cycle.</li>
+      <li><strong>Investment rates.</strong> Several emerging markets, including China and India, invest more than 35% of GDP, against 20–25% in the US and Europe. China's investment roughly matches its saving; in India, saving moderately exceeds investment.</li>
+      <li><strong>The gap.</strong> Saving minus investment shows up as the current account. Germany and China run persistent surpluses (excess saving), while the US runs a deficit.</li>
+    </ul>
+    <p>High income growth and thin social safety nets encourage precautionary saving, while shallow capital markets and weak institutions keep households risk-averse. In much of Asia, a "repressed" financial system means deposits make up roughly 70–80% of household financial assets, with low holdings of equities and bonds.</p>
+
+    <h2 id="households">Household saving and wealth patterns</h2>
+    <p>Households contribute a large share of national saving, but their behaviour varies sharply by country and age.</p>
+    <ul>
+      <li><strong>Financial inclusion.</strong> Global Findex data show adult account ownership ranging from about 95% in some high-income countries to below 50% in parts of Asia and Africa. Among the top 50 economies, ownership is generally above 70% in advanced markets but lower in Pakistan (about 20%), India (about 60%) and China (about 80%). Under-35s tend to have slightly lower rates, and many young households in emerging markets rely on cash.</li>
+      <li><strong>Deposit balances.</strong> Balances are often low in emerging markets. Findex reports a median deposit in India of under $100 (2022 data), compared with several thousand dollars in the US and Europe, leaving young people with little buffer for emergencies or investment.</li>
+      <li><strong>Pension coverage.</strong> Pension entitlements make up a large share of wealth in advanced economies, but under-35s have built up little. In Singapore, virtually all earners contribute to CPF; in China, pension coverage for private-sector workers is incomplete.</li>
+      <li><strong>Equities and housing.</strong> About half of US and UK households own stocks or mutual funds, against often less than 5% in Asia. Homeownership is high in China (over 70%) and Singapore (about 90%), though lower among young people.</li>
+    </ul>
+    <p>Put together, middle-income 25–34-year-olds in the US show about 75% bank account ownership, a median deposit of about $10,000 and 40% owning equities or pensions. A comparable Chinese cohort shows about 60% account ownership, a median deposit of about $2,000 and under 5% owning equities. Young people in Africa and South Asia are generally less well served by financial institutions.</p>
+    <p>Household saving rates tell a similar story. In 2019, US household net saving was about 7% of disposable income, against roughly 30% in China.</p>
+
+    <h2 id="surplus">Defining "eligible surplus"</h2>
+    <p>We define the investable surplus for a household segment as:</p>
+    <div class="formula">Eligible surplus = max(0, liquid financial assets − emergency reserve − near-term obligations)</div>
+    <ul>
+      <li><strong>Liquid financial assets</strong> are cash and bank deposits, plus very short-term bonds or money-market funds where data allow.</li>
+      <li><strong>Emergency reserve</strong> is three months of essential spending, proxied by median consumption from national statistics. A household spending $2,000 a month on basics would hold a $6,000 reserve. We test two to six months.</li>
+      <li><strong>Near-term obligations</strong>, such as education fees or weddings, are ignored for simplicity, so the surplus is an upper bound.</li>
+    </ul>
+    <p>In a typical advanced economy, a middle-income 30-year-old might hold $12,000 in deposits and reserve $6,000, leaving a $6,000 surplus. In many emerging markets, median deposits of about $2,000 against a $3,000 reserve leave little or nothing.</p>
+    <p>Multiplying the surplus per household by cohort size gives preliminary estimates:</p>
+    <ul>
+      <li><strong>High-income markets</strong> (US, Japan, Europe): $5,000–10,000 per young household, across a cohort of a few tens of millions, totalling tens of billions of dollars.</li>
+      <li><strong>China, ASEAN and India</strong>: $1,000–3,000 per household, but far larger populations, potentially totalling hundreds of billions.</li>
+      <li><strong>Middle-income Latin America</strong> (Brazil, Mexico): in between.</li>
+      <li><strong>Lower-income top-50 economies</strong> (Pakistan, Bangladesh): small per household, but notable in total.</li>
+    </ul>
+    <p>Where saving is mandatory and illiquid, as with Singapore's CPF or UAE pensions, we exclude it from the liquid surplus.</p>
+
+    <h2 id="allocation">Asset allocation of young households</h2>
+    <p>Using OECD household accounts and Findex proxies, under-35 households in most markets strongly favour deposits:</p>
+    <ul>
+      <li><strong>United States:</strong> even 25–34-year-olds hold about 50–60% of financial assets in deposits and cash, about 20% in retirement accounts and about 20% in equities and funds.</li>
+      <li><strong>China:</strong> over 80% in bank deposits, about 15% in housing and under 5% in stocks or funds.</li>
+      <li><strong>Japan:</strong> about 70% deposits, 20% pensions and 10% equities.</li>
+      <li><strong>Germany:</strong> about 60% deposits, 30% pensions and insurance, and 10% equities.</li>
+      <li><strong>Singapore:</strong> CPF is mandatory; outside it, perhaps 50% deposits, 20% provident fund top-ups and 30% investment funds.</li>
+    </ul>
+    <p>The pattern is a global bias towards cash among the young. In many countries, equity participation among under-35s is below 10%, compared with 20–50% in the US and UK. Granular country-by-country data for this age group are scarce, so these figures rely on the best available proxies, but the common pattern is clear.</p>
+
+    <h2 id="scenarios">Wealth accumulation scenarios</h2>
+    <p>Consider a 25-year-old who saves 10% of income each year and invests it 50/50 in bonds and equities. We assume a 1% real deposit rate, a 2% real bond return, a 5% equity risk premium, 2% inflation and fees of 0.5% a year.</p>
+    <ul>
+      <li><strong>Baseline (median outcome):</strong> saving $1,000 a year for 30 years builds terminal wealth of about $60,000 in real terms, roughly double the $30,000 contributed.</li>
+      <li><strong>Downside (20th percentile):</strong> if equities follow a weak path, outcomes may be about 60–70% of the median, still ahead of keeping everything in deposits.</li>
+    </ul>
+    <p>This is the opportunity cost in practice. Investing $12,000 a year from age 25 to 55 could grow to about $800,000, against about $360,000 if kept as deposits.</p>
+
+    <h2 id="cost">The opportunity cost of excess saving</h2>
+    <p>For each country, we assume the eligible surplus is invested in a low-risk benchmark portfolio of 60% local equities and 40% government bonds. Using real returns of 3–6% for equities and 1–2% for bonds, and local tax rates, we compute the after-tax excess return over bank deposits.</p>
+    <p>For example, if young households hold a $10,000 surplus earning 1% real instead of 4% in a conservative portfolio after fees, each loses about $300 a year. Across 5 million households, that is $1.5 billion a year in forgone growth. In volatile markets such as Brazil the loss is higher; in stable, low-return markets such as Japan it is lower.</p>
+    <p>Insurance needs and behavioural frictions mean some households rationally stay liquid. But from a pure wealth-building view, the numbers point to substantial under-investment.</p>
+
+    <h2 id="drivers">Drivers of saving and investment</h2>
+    <ul>
+      <li><strong>Income and wealth.</strong> Higher expected lifetime income tends to reduce precautionary saving once needs are met, while rising inequality can increase it. Richer cohorts save more in absolute terms but less as a share of income.</li>
+      <li><strong>Precaution.</strong> Countries with volatile growth or weak social insurance save more. A lack of unemployment insurance or pensions compels precautionary saving, especially in Asia and Latin America.</li>
+      <li><strong>Demographics.</strong> A young population can raise aggregate saving as households build assets, while an ageing one may draw savings down. Individually, though, young people save less, so the net effect is mixed.</li>
+      <li><strong>Institutional design.</strong> Strong public pensions reduce the need for private saving. Singapore's CPF enforces high saving but in a relatively low-return account; voluntary systems like the US 401(k) see uneven participation. Countries with shallow capital markets hold more deposits.</li>
+      <li><strong>Financial frictions.</strong> Tighter lending or stock-market volatility pushes saving towards safer deposits.</li>
+      <li><strong>Behaviour.</strong> Home bias, anchoring to cash and low financial literacy are common. Young savers often cite fear of loss or lack of knowledge as reasons for not investing.</li>
+    </ul>
+    <p>These associations are consistent with economic theory, but country-level comparisons mask differences within countries, data gaps force approximations, and causality is hard to establish.</p>
+
+    <h2 id="cases">Case studies</h2>
+
+    <div class="case">
+      <h3>United States</h3>
+      <dl>
+        <dt>Context</dt><dd>GDP of about $31T, widespread financial access and deep capital markets. The under-35 middle class numbers about 40 million households with incomes of $30,000–60,000.</dd>
+        <dt>Wealth</dt><dd>About 75% of 25–34-year-olds have bank accounts, 60% have retirement accounts and 50% own equities or funds. Median liquid assets are about $12,000; after a $6,000 buffer, the eligible surplus is about $6,000 per household, or about $240B in aggregate.</dd>
+        <dt>Behaviour</dt><dd>Student debt reduces net saving, though many use 401(k)s and IRAs. The household net saving rate is low, at a few percent.</dd>
+        <dt>Institutions</dt><dd>The 401(k) system encourages equity exposure, while FDIC-insured banks hold much of the cash. Housing is the main non-financial asset.</dd>
+        <dt>Opportunity</dt><dd>A conservative portfolio could earn about 3–4% real against about 1% for deposits: roughly $150–200 extra per household a year, or about $6–8B a year in total.</dd>
+        <dt>Business case</dt><dd>Robo-advisers, round-up savings apps and digital retirement planning for millennials. About 40 million households × $6,000 = $240B investable; a 1% advisory fee implies $2.4B a year. Fintech channels and employer programmes are key to distribution.</dd>
+      </dl>
+    </div>
+
+    <div class="case">
+      <h3>China</h3>
+      <dl>
+        <dt>Context</dt><dd>The second-largest economy (about $19.6T), with very high saving. Urban middle-class 20–35-year-olds number about 300 million, with incomes mostly under $15,000 a year.</dd>
+        <dt>Wealth</dt><dd>About 80% of under-35s have bank accounts, with most savings held in state-bank deposits. Median liquid assets are about $3,000; after a $1,500 reserve, the surplus is about $1,500, or about $450B in aggregate.</dd>
+        <dt>Allocation</dt><dd>Over 80% of financial assets in deposits, about 10% in housing and under 5% in A-shares. Pension coverage among migrant workers is very low.</dd>
+        <dt>Opportunity</dt><dd>Deposits yield about 0.5% real versus about 5% for a conservative portfolio: roughly $70–80 extra per household a year, or about $30B forgone in total.</dd>
+        <dt>Drivers</dt><dd>Gaps in the social safety net for education and health drive saving. Equity markets are seen as volatile, while trust in banks is high.</dd>
+        <dt>Business case</dt><dd>Large scope for digital wealth products, building on platforms such as Ant and Tencent: fund platforms, pension top-ups and robo-investing apps. Assuming 150 million target households with a $1,500 surplus gives $225B in potential assets; a 0.5% fee implies $1.1B a year. Regulation, trust and financial literacy are the main challenges.</dd>
+      </dl>
+    </div>
+
+    <div class="case">
+      <h3>Japan</h3>
+      <dl>
+        <dt>Context</dt><dd>GDP of about $4.5T and an ageing society. Under-35s are a small share, about 12 million people.</dd>
+        <dt>Wealth</dt><dd>Household net worth is high (about 600% of GDP) but skewed towards older people. Under-35 median net financial assets are about $15,000, with an eligible surplus of about $5,000, or about $60B in aggregate.</dd>
+        <dt>Allocation</dt><dd>About 50% cash and deposits, 30% public pension entitlements and 20% equities. Housing matters less because of urban renting.</dd>
+        <dt>Opportunity</dt><dd>With deposits at about 0% real and a portfolio at about 3%, the gap is about $150 a year per household, or about $2B in total.</dd>
+        <dt>Behaviour</dt><dd>A strong cultural preference for security; years of loose monetary policy did little to change saving habits.</dd>
+        <dt>Business case</dt><dd>Engaging young people through NISA tax-free accounts, ESG funds, gamified investing, employer matching and automated advice. About 10 million households × $5,000 = $50B potential.</dd>
+      </dl>
+    </div>
+
+    <div class="case">
+      <h3>Germany</h3>
+      <dl>
+        <dt>Context</dt><dd>GDP of about $4T and an export-led economy, with about 15 million young middle-class households.</dd>
+        <dt>Wealth</dt><dd>The median 25–34-year-old holds about €10,000 in liquid assets; after a €4,000 reserve, the surplus is about €6,000, or about €90B in aggregate.</dd>
+        <dt>Allocation</dt><dd>About 60% deposits, 20% mandatory pension insurance and 5–10% stocks. Homeownership among young people is about 30%.</dd>
+        <dt>Opportunity</dt><dd>Deposits at about 1% real versus a portfolio at about 4%: about €100 a year per household, or about €1.5B in total.</dd>
+        <dt>Drivers</dt><dd>Strong social safety nets reduce precautionary saving, but there is no strong equity culture, and the euro debt crisis left savers risk-averse.</dd>
+        <dt>Business case</dt><dd>Low-fee robo-advisers and workplace saving schemes that appeal to the "Sparer" mindset. About 7 million households × €6,000 = €42B in potential assets. MiFID II compliance and investor education are the main hurdles.</dd>
+      </dl>
+    </div>
+
+    <div class="case">
+      <h3>Singapore</h3>
+      <dl>
+        <dt>Context</dt><dd>GDP of about $0.6T and high income per head. About 0.8 million people are under 35. Mandatory CPF contributions create high enforced saving.</dd>
+        <dt>Wealth</dt><dd>Virtually all workers hold CPF savings, which we treat as illiquid. Outside CPF, a typical 30-year-old may hold only a few thousand dollars in the bank, so the eligible surplus is about $2,000 per household, or about $1.5B in total.</dd>
+        <dt>Allocation</dt><dd>Beyond CPF, about 70% of extra savings sit in deposits, with the rest in small equity funds. HDB flats are a major but highly leveraged asset.</dd>
+        <dt>Opportunity</dt><dd>CPF yields about 3%, close to risk-free and comparable to bonds, so the opportunity cost is smaller than elsewhere. Investing extra savings in diversified global funds could still add about $50–100 a year per household.</dd>
+        <dt>Drivers</dt><dd>Compulsory CPF saving dominates; many young Singaporeans say the high cost of living leaves little to save outside it.</dd>
+        <dt>Business case</dt><dd>Robo-advisers such as Syfe already exist, but there is room for products aimed at "CPF-rich, cash-poor" young people: auto-investing spare salary, CPF top-ups, and partnerships with asset managers. About 0.5 million households × $2,000 = $1B investable; a 0.5% fee implies about $5M a year. Small, but specialised advice could command higher fees.</dd>
+      </dl>
+    </div>
+
+    <h2 id="sizing">Business opportunities and market sizing</h2>
+    <p>Four product ideas stand out:</p>
+    <ul>
+      <li><strong>Digital investment platforms</strong>, such as robo-advisers and micro-investing apps, for young middle-income savers in China, India and Southeast Asia.</li>
+      <li><strong>Pension-investment hybrids</strong>, such as voluntary top-ups invested in global funds.</li>
+      <li><strong>Financial education and advice</strong> bundled with products, since low literacy is a key barrier.</li>
+      <li><strong>Employer-based saving schemes</strong> built into payroll.</li>
+    </ul>
+    <p>Market size is estimated in three steps:</p>
+    <ul>
+      <li><strong>Total addressable market (TAM):</strong> eligible households × average surplus. For China's middle-class youth, about 200 million households × $2,000 = $400B in potential assets.</li>
+      <li><strong>Serviceable addressable market (SAM):</strong> the share a product can actually reach, such as tech-savvy urban youth. If 30% is reachable digitally: $120B.</li>
+      <li><strong>Serviceable obtainable market (SOM):</strong> a plausible early share, such as 5% of SAM within five years: $6B in assets. At 0.5–1% fees, that is $30–60M a year in revenue.</li>
+    </ul>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Country</th><th>Young middle-income HHs (M)</th><th>Median surplus (USD)</th><th>TAM</th><th>SAM</th><th>SOM</th><th>Fee / yr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>USA</td><td>40</td><td>6,000</td><td>$240B</td><td>$100B</td><td>$5B</td><td>1.0%</td></tr>
+          <tr><td>China</td><td>200</td><td>2,250</td><td>$450B</td><td>$150B</td><td>$7B</td><td>0.5%</td></tr>
+          <tr><td>India</td><td>100</td><td>500</td><td>$50B</td><td>$20B</td><td>$1B</td><td>0.5%</td></tr>
+          <tr><td>Japan</td><td>10</td><td>5,000</td><td>$50B</td><td>$20B</td><td>$1B</td><td>0.8%</td></tr>
+          <tr><td>Germany</td><td>15</td><td>6,000</td><td>$90B</td><td>$30B</td><td>$1.5B</td><td>0.8%</td></tr>
+          <tr><td>Singapore</td><td>0.8</td><td>2,500</td><td>$2B</td><td>$1B</td><td>$0.1B</td><td>0.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">Illustrative, order-of-magnitude estimates.</p>
+    <p>China and India offer the largest markets but lower fees because of competition, so scale and low cost matter most there. The US and Germany allow higher fees but offer less growth. Mobile apps, digital banks and wealth-tech aggregators are the main channels. Licensing, data-privacy rules (GDPR, Singapore's PDPA) and customer acquisition costs are the main constraints.</p>
+
+    <h2 id="conclusions">Conclusions</h2>
+    <p>A significant share of household savings in major economies is parked in low-yield deposits, especially among younger middle-income households. That represents a large pool of untapped capital that could earn more for savers and fund more investment for economies. Under-35s in emerging markets are an especially promising group: individually modest in wealth, but numerous enough that small shifts could unlock tens of billions in investment each year.</p>
+    <p>The barriers are precautionary motives, limited financial access and behavioural inertia. The same barriers point to the solutions: digital finance that lowers costs and widens reach, better-designed pensions, and investor education.</p>
+    <p><strong>Limitations.</strong> The scenarios rely on historical return assumptions that may not hold. Segmentation by age and income is necessarily coarse, and the analysis does not model feedback effects, such as asset prices rising if many savers shift at once. The qualitative conclusion holds regardless: high saving combined with low investment means large forgone gains.</p>
+    <p><strong>Sources.</strong> IMF World Economic Outlook (2025); World Bank World Development Indicators and Global Findex; OECD household accounts.</p>
+
+    <div class="end">
+      <a class="back" href="/valueinvesting#research">← Back to the thought pad</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Personal notes, not investment advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>

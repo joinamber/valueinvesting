@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/valueinvesting", "destination": "/index.html" },
+    { "source": "/valueinvesting", "destination": "/" },
     { "source": "/valueinvesting/:path*", "destination": "/:path*" }
   ]
 }
